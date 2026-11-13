@@ -1,0 +1,6 @@
+test_id,question,expected,actual,status
+TC001,What is the capital of France?,Paris,The capital of France is Paris.,PASS
+TC002,What is 5 multiplied by 5?,25,25,PASS
+TC003,Which planet is known as the Red Planet?,Mars,"Mars. Its surface is rich in iron oxide (rust), which gives it a reddish appearance, so it's commonly called the Red Planet.",PASS
+TC004,What is the capital of Australia?,Canberra,Sydney,FAIL
+TC005,Who developed Python?,Guido van Rossum,"Python was created by Guido van Rossum. He began developing it in December 1989 at the Centrum Wiskunde & Informatica (CWI) in the Netherlands, and released the first public version (0.9.0) in 1991. Van Rossum led the project (often called the BDFL) until he stepped down in 2018. Today Python is developed and maintained by a large open-source community and organizations such as the Python Software Foundation; the reference implementation is CPython.",PASS

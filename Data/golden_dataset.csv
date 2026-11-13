@@ -1,0 +1,6 @@
+test_id,question,expected_answer
+TC001,What is the capital of France?,Paris
+TC002,What is 5 multiplied by 5?,25
+TC003,Which planet is known as the Red Planet?,Mars
+TC004,What is the capital of Australia?,Canberra
+TC005,Who developed Python?,Guido van Rossum
