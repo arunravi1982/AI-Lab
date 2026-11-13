@@ -1,0 +1,214 @@
+import os
+
+from dotenv import load_dotenv
+
+from langchain_openai import ChatOpenAI
+
+from langchain.agents import create_agent
+
+from tools import tools
+
+
+load_dotenv()
+
+
+# Initialize LLM
+llm = ChatOpenAI(
+
+    model=os.getenv("MODEL_NAME", "gpt-5-mini"),
+
+    temperature=0
+
+)
+
+
+# Agent instructions
+SYSTEM_PROMPT = """
+You are an E-Commerce Customer Support Assistant.
+
+You help users retrieve product information,
+customer information, and sample content.
+
+You also help compare product prices.
+
+Available tools:
+
+1. get_product_details
+   Use this when the user asks about a product.
+
+2. get_user_details
+   Use this when the user asks for customer information.
+
+3. get_post_details
+   Use this when the user asks about a particular post.
+
+4. compare_product_prices
+   Use this when the user wants to compare two product prices.
+
+Instructions:
+
+- Always use the relevant tool when external information is required.
+- Never invent product information.
+- Never invent customer information.
+- Clearly communicate API errors.
+- Do not claim that sample API data represents a real customer's
+  account or a real commercial product catalog.
+- Ask for missing IDs when required.
+- Explain results in simple language.
+- Do not claim that a purchase, refund, or order update
+  has been performed.
+"""
+
+
+# Create agent
+agent = create_agent(
+
+    model=llm,
+
+    tools=tools,
+
+    system_prompt=SYSTEM_PROMPT
+
+)
+
+
+print("E-Commerce Customer Support Agent initialized.")
+2026-11-12 04:19:52,674 | INFO | main | Request received | request_id=c1afa29f-7291-463b-9a24-0c44e943c0ec
+2026-11-12 04:19:56,708 | INFO | httpx2 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-12 04:19:56,719 | INFO | tools | Service health check completed: payment-service
+2026-11-12 04:19:56,724 | INFO | tools | System logs retrieved for payment-service
+2026-11-12 04:20:09,576 | INFO | httpx2 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-12 04:20:09,592 | INFO | main | Request completed | request_id=c1afa29f-7291-463b-9a24-0c44e943c0ec
+2026-11-12 04:21:05,469 | INFO | main | Request received | request_id=c2531066-88f2-4b67-8dda-e4a6dfe835e4
+2026-11-12 04:21:06,595 | INFO | httpx2 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-12 04:21:06,599 | INFO | tools | Service health check completed: authentication-service
+2026-11-12 04:21:11,044 | INFO | httpx2 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-12 04:21:11,051 | INFO | main | Request completed | request_id=c2531066-88f2-4b67-8dda-e4a6dfe835e4
+2026-11-12 04:21:32,167 | INFO | main | Request received | request_id=d82a609c-1d47-40a0-97f7-fca778e68a41
+2026-11-12 04:21:33,567 | INFO | httpx2 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-12 04:21:33,570 | INFO | tools | Incident retrieved: INC1001
+2026-11-12 04:21:38,943 | INFO | httpx2 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-12 04:21:38,959 | INFO | main | Request completed | request_id=d82a609c-1d47-40a0-97f7-fca778e68a41
+2026-11-12 04:21:56,609 | INFO | main | Request received | request_id=906101b0-be1f-45b6-baf7-39775cabf875
+2026-11-12 04:21:56,611 | WARNING | guardrails | Potential prompt injection detected.
+2026-11-12 04:21:56,611 | WARNING | graph | Input rejected: Potentially unsafe instructions detected.
+2026-11-12 04:21:56,611 | INFO | main | Request completed | request_id=906101b0-be1f-45b6-baf7-39775cabf875
+2026-11-12 04:22:08,622 | INFO | main | Request received | request_id=b87593cd-9b8c-4395-ba34-5a738864e2d6
+2026-11-12 04:22:19,462 | INFO | httpx2 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-12 04:22:19,462 | INFO | main | Request completed | request_id=b87593cd-9b8c-4395-ba34-5a738864e2d6
+2026-11-12 04:22:57,496 | INFO | main | Request received | request_id=49d2e5c9-0dd2-452d-9a76-7a6c494aeadf
+2026-11-12 04:22:58,722 | INFO | httpx2 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-12 04:22:58,727 | ERROR | tools | Monitoring timeout: Simulated monitoring timeout
+2026-11-12 04:23:06,882 | INFO | httpx2 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-12 04:23:06,893 | INFO | main | Request completed | request_id=49d2e5c9-0dd2-452d-9a76-7a6c494aeadf
+2026-11-12 04:23:33,210 | INFO | main | Request received | request_id=f809d13f-10ce-4769-9179-97149a9c26b5
+2026-11-12 04:23:34,705 | INFO | httpx2 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-12 04:23:41,178 | INFO | httpx2 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-12 04:23:41,189 | INFO | main | Request completed | request_id=f809d13f-10ce-4769-9179-97149a9c26b5
+2026-11-12 04:42:57,730 | INFO | main | Request received | request_id=84250b66-3bc0-4a01-a427-6f8bd91cce76
+2026-11-12 04:42:57,742 | WARNING | graph | Input rejected: Request exceeds the 1000-character limit.
+2026-11-12 04:42:57,746 | INFO | main | Request completed | request_id=84250b66-3bc0-4a01-a427-6f8bd91cce76
+2026-11-12 04:43:59,078 | INFO | main | Request received | request_id=4ee5384e-846f-4c2e-8b4f-a9a23d16481e
+2026-11-12 04:43:59,080 | WARNING | graph | Input rejected: Request exceeds the 1000-character limit.
+2026-11-12 04:43:59,082 | INFO | main | Request completed | request_id=4ee5384e-846f-4c2e-8b4f-a9a23d16481e
+2026-11-12 04:44:17,897 | INFO | main | Request received | request_id=686c9a88-d5c4-4654-90ad-2d3712718b00
+2026-11-12 04:44:17,905 | WARNING | graph | Input rejected: Request exceeds the 100-character limit.
+2026-11-12 04:44:17,909 | INFO | main | Request completed | request_id=686c9a88-d5c4-4654-90ad-2d3712718b00
+2026-11-12 04:44:54,815 | INFO | main | Request received | request_id=0205bb08-5fc3-442d-b3f9-20c36ab83b9a
+2026-11-12 04:45:11,787 | INFO | httpx2 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-12 04:45:11,815 | INFO | main | Request completed | request_id=0205bb08-5fc3-442d-b3f9-20c36ab83b9a
+2026-11-12 04:50:36,770 | INFO | main | Request received | request_id=8c6b52ba-0817-4d7a-abbf-0e9c33f8f836
+2026-11-12 04:50:41,676 | INFO | httpx2 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-12 04:50:41,878 | ERROR | main | Request failed | request_id=8c6b52ba-0817-4d7a-abbf-0e9c33f8f836
+Traceback (most recent call last):
+  File "C:\Users\azureuser\Desktop\ArunR_AI_Guardrails_Observability_Lab\main.py", line 70, in run_agent
+    result = graph.invoke(
+             ^^^^^^^^^^^^^
+  File "C:\Users\azureuser\Desktop\ArunR_AI_Guardrails_Observability_Lab\venv\Lib\site-packages\langgraph\pregel\main.py", line 4000, in invoke
+    for chunk in self.stream(
+  File "C:\Users\azureuser\Desktop\ArunR_AI_Guardrails_Observability_Lab\venv\Lib\site-packages\langgraph\pregel\main.py", line 3060, in stream
+    for _ in runner.tick(
+  File "C:\Users\azureuser\Desktop\ArunR_AI_Guardrails_Observability_Lab\venv\Lib\site-packages\langgraph\pregel\_runner.py", line 204, in tick
+    run_with_retry(
+  File "C:\Users\azureuser\Desktop\ArunR_AI_Guardrails_Observability_Lab\venv\Lib\site-packages\langgraph\pregel\_retry.py", line 637, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\azureuser\Desktop\ArunR_AI_Guardrails_Observability_Lab\venv\Lib\site-packages\langgraph\_internal\_runnable.py", line 794, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\azureuser\Desktop\ArunR_AI_Guardrails_Observability_Lab\venv\Lib\site-packages\langgraph\_internal\_runnable.py", line 479, in invoke
+    ret = self.func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\azureuser\Desktop\ArunR_AI_Guardrails_Observability_Lab\venv\Lib\site-packages\langgraph\prebuilt\tool_node.py", line 830, in _func
+    outputs = list(
+              ^^^^^
+  File "C:\Users\azureuser\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py", line 619, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\azureuser\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py", line 317, in _result_or_cancel
+    return fut.result(timeout)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\azureuser\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\azureuser\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\azureuser\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\azureuser\Desktop\ArunR_AI_Guardrails_Observability_Lab\venv\Lib\site-packages\langchain_core\runnables\config.py", line 650, in _wrapped_fn
+    return contexts.pop().run(fn, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\azureuser\Desktop\ArunR_AI_Guardrails_Observability_Lab\venv\Lib\site-packages\langgraph\prebuilt\tool_node.py", line 1063, in _run_one
+    return self._execute_tool_sync(tool_request, input_type, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\azureuser\Desktop\ArunR_AI_Guardrails_Observability_Lab\venv\Lib\site-packages\langgraph\prebuilt\tool_node.py", line 1023, in _execute_tool_sync
+    content = _handle_tool_error(e, flag=self._handle_tool_errors)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\azureuser\Desktop\ArunR_AI_Guardrails_Observability_Lab\venv\Lib\site-packages\langgraph\prebuilt\tool_node.py", line 442, in _handle_tool_error
+    content = flag(e)  # type: ignore [assignment, call-arg]
+              ^^^^^^^
+  File "C:\Users\azureuser\Desktop\ArunR_AI_Guardrails_Observability_Lab\venv\Lib\site-packages\langgraph\prebuilt\tool_node.py", line 399, in _default_handle_tool_errors
+    raise e
+  File "C:\Users\azureuser\Desktop\ArunR_AI_Guardrails_Observability_Lab\venv\Lib\site-packages\langgraph\prebuilt\tool_node.py", line 966, in _execute_tool_sync
+    response = tool.invoke(call_args, config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\azureuser\Desktop\ArunR_AI_Guardrails_Observability_Lab\venv\Lib\site-packages\langchain_core\tools\base.py", line 764, in invoke
+    return self.run(tool_input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\azureuser\Desktop\ArunR_AI_Guardrails_Observability_Lab\venv\Lib\site-packages\langchain_core\tools\base.py", line 1132, in run
+    raise error_to_raise
+  File "C:\Users\azureuser\Desktop\ArunR_AI_Guardrails_Observability_Lab\venv\Lib\site-packages\langchain_core\tools\base.py", line 1098, in run
+    response = context.run(self._run, *tool_args, **tool_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\azureuser\Desktop\ArunR_AI_Guardrails_Observability_Lab\venv\Lib\site-packages\langchain_core\tools\structured.py", line 152, in _run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\azureuser\Desktop\ArunR_AI_Guardrails_Observability_Lab\tools.py", line 163, in get_resource_metrics
+    cpu_util = psutil.cpu_percent(interval=0.5)
+               ^^^^^^
+NameError: name 'psutil' is not defined
+During task with name 'tools' and id 'e93ad442-329a-1fdf-cbbf-177cb4bfcec6'
+2026-11-12 04:54:53,366 | INFO | main | Request received | request_id=f9ef6e96-64e5-4174-97bf-71370b4945f4
+2026-11-12 04:54:56,315 | INFO | httpx2 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-12 04:55:13,238 | INFO | httpx2 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-12 04:55:13,243 | INFO | main | Request completed | request_id=f9ef6e96-64e5-4174-97bf-71370b4945f4
+2026-11-12 04:59:19,898 | INFO | main | Request received | request_id=2a85da79-a7d8-42c0-be00-c9c2b0887f44
+2026-11-12 04:59:26,626 | INFO | httpx2 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-12 04:59:26,637 | INFO | main | Request completed | request_id=2a85da79-a7d8-42c0-be00-c9c2b0887f44
+2026-11-12 05:06:21,872 | INFO | main | Request received | request_id=6359045e-ee92-4576-9bf7-e392e0e190ae
+2026-11-12 05:06:25,957 | INFO | httpx2 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-12 05:06:25,979 | INFO | tools | Service health check completed: payment-service
+2026-11-12 05:06:25,985 | INFO | tools | System logs retrieved for payment-service
+2026-11-12 05:06:46,918 | INFO | httpx2 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-12 05:06:46,939 | INFO | main | Request completed | request_id=6359045e-ee92-4576-9bf7-e392e0e190ae
+2026-11-12 05:06:50,380 | INFO | main | Request received | request_id=3da07b9e-1103-4e41-ba89-7c25751a3490
+2026-11-12 05:06:51,925 | INFO | httpx2 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-12 05:06:51,953 | INFO | tools | System logs retrieved for payment-service
+2026-11-12 05:07:00,625 | INFO | httpx2 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-12 05:07:00,635 | INFO | main | Request completed | request_id=3da07b9e-1103-4e41-ba89-7c25751a3490
+2026-11-12 05:07:16,620 | INFO | main | Request received | request_id=8a7cfaa6-82d0-46db-bdda-be9c897a2547
+2026-11-12 05:07:18,370 | INFO | httpx2 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-12 05:07:18,374 | INFO | tools | Incident retrieved: INC1001
+2026-11-12 05:07:23,540 | INFO | httpx2 | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-12 05:07:23,545 | INFO | main | Request completed | request_id=8a7cfaa6-82d0-46db-bdda-be9c897a2547

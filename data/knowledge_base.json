@@ -1,0 +1,40 @@
+[
+  {
+    "id": "KB001",
+    "topic": "Password Reset",
+    "content": "Employees can reset their password through the company self-service portal. Passwords must contain at least 12 characters."
+  },
+  {
+    "id": "KB002",
+    "topic": "VPN Access",
+    "content": "Employees must connect using the company VPN client. If VPN connectivity fails, restart the client and verify internet connectivity. Contact IT if the issue continues."
+  },
+  {
+    "id": "KB003",
+    "topic": "Laptop Support",
+    "content": "Laptop hardware problems should be reported to IT support. Include the device ID and a description of the issue."
+  },
+  {
+    "id": "KB004",
+    "topic": "Software Installation",
+    "content": "Employees must request software installation through the IT helpdesk. Administrator approval may be required."
+  },
+  {
+    "id": "KB005",
+    "topic": "Email Access",
+    "content": "Employees can access company email through the corporate email portal. If access fails, check network connectivity and account status."
+  },
+  {
+    "id": "KB006",
+    "topic": "Printer Troubleshooting",
+    "content": "Check that the printer is powered on, connected to the network, and has sufficient paper. Restart the printer if necessary. Contact IT support if the issue continues."
+  },
+  {"Employee ID": "EMP-1001",
+   "Device": "LAPTOP-1001",
+   "Operating System": "Windows 11",
+    "Status": "Active"
+  },
+  {
+    "Microsoft Troubleshooting Artcile": "https://www.google.com/goto?url=CAESiAEBxCJF13_Q8bO72Hc6ty6VeV4S0o9t4TCkQ430vqCzYmYyrOalsPySRICfLgAA0hAIDUPlgZ0EwFbykKOOMNHWbK047rrG5WC9zEo0JHFQiuR8lKIXkRkF614MNX7apdFC-Re2a8AQtTjKFEYYgIYaKAMogOKHXMOf13Y-r3Siwci5oxK-xyx_"
+   }
+]

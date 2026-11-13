@@ -1,5 +1,5 @@
 langchain
 langchain-openai
 langgraph
-langfuse>=4.0.0
+langfuse
 python-dotenv

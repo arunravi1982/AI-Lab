@@ -1,0 +1,26 @@
+[
+    {
+        "ticket_id": "TICK-1001",
+        "title": "VPN Connection Issue",
+        "description": "Employee cannot connect to corporate VPN.",
+        "status": "In Progress",
+        "priority": "High",
+        "assigned_to": "IT Network Team"
+    },
+    {
+        "ticket_id": "TICK-1002",
+        "title": "Laptop Battery Issue",
+        "description": "Laptop battery is not charging.",
+        "status": "Open",
+        "priority": "Medium",
+        "assigned_to": "Hardware Support Team"
+    },
+    {
+        "ticket_id": "TICK-1003",
+        "title": "Laptop will not start \u2014 arunravi / Lenovo ThinkPad",
+        "description": "User: arunravi\nLocation: Trivandrum\nDevice: Lenovo ThinkPad\nIssue: Laptop shows a blank screen and will not start. User has tried all basic troubleshooting steps (charger connected, different outlet, held power button, removed battery, etc.). No asset tag or serial provided.\nContact phone: 8301814936\nRequest: Hardware troubleshooting and repair or replacement as needed.",
+        "status": "Open",
+        "priority": "High",
+        "assigned_to": "IT Support Team"
+    }
+]
